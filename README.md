@@ -115,3 +115,4 @@ This software is for educational and personal use only. Options trading involves
 *Last updated: $(date)*
 
 <!-- Deployment trigger: $(date +%s) -->
+<!-- UI Redesign Complete: Modern dark theme with glass effects -->
