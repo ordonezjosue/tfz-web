@@ -1,6 +1,6 @@
 # TFZ Trading Assistant
 
-A sophisticated personal trading assistant web application that automates options-selling strategies and integrates with Tastytrade and Google Sheets.
+A sophisticated personal trading assistant web application that automates options-selling strategies and integrates with Tastytrade and Google Sheets
 
 ## 🚀 Features
 
