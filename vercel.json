@@ -3,19 +3,5 @@
     "src/app/api/**/*.ts": {
       "maxDuration": 30
     }
-  },
-  "env": {
-    "APP_USER": "@app_user",
-    "APP_PASS": "@app_pass",
-    "POLYGON_API_KEY": "@polygon_api_key",
-    "TASTY_CLIENT_ID": "@tasty_client_id",
-    "TASTY_CLIENT_SECRET": "@tasty_client_secret",
-    "TASTY_USERNAME": "@tasty_username",
-    "TASTY_PASSWORD": "@tasty_password",
-    "GOOGLE_SERVICE_ACCOUNT_EMAIL": "@google_service_account_email",
-    "GOOGLE_PRIVATE_KEY": "@google_private_key",
-    "GOOGLE_SHEET_ID": "@google_sheet_id",
-    "NEXTAUTH_SECRET": "@nextauth_secret",
-    "OPENAI_API_KEY": "@openai_api_key"
   }
 }
