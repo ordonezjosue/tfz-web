@@ -1,26 +1,30 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --card: #ffffff;
-  --card-foreground: #171717;
-  --popover: #ffffff;
-  --popover-foreground: #171717;
-  --primary: #171717;
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --card: #111111;
+  --card-foreground: #fafafa;
+  --popover: #111111;
+  --popover-foreground: #fafafa;
+  --primary: #3b82f6;
   --primary-foreground: #fafafa;
-  --secondary: #f4f4f5;
-  --secondary-foreground: #171717;
-  --muted: #f4f4f5;
-  --muted-foreground: #71717a;
-  --accent: #f4f4f5;
-  --accent-foreground: #171717;
+  --secondary: #1e293b;
+  --secondary-foreground: #fafafa;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #1e293b;
+  --accent-foreground: #fafafa;
   --destructive: #ef4444;
   --destructive-foreground: #fafafa;
-  --border: #e4e4e7;
-  --input: #e4e4e7;
-  --ring: #171717;
-  --radius: 0.5rem;
+  --success: #10b981;
+  --success-foreground: #fafafa;
+  --warning: #f59e0b;
+  --warning-foreground: #fafafa;
+  --border: #1e293b;
+  --input: #1e293b;
+  --ring: #3b82f6;
+  --radius: 0.75rem;
 }
 
 @theme inline {
@@ -47,36 +51,72 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --card: #0a0a0a;
-    --card-foreground: #ededed;
-    --popover: #0a0a0a;
-    --popover-foreground: #ededed;
-    --primary: #ededed;
-    --primary-foreground: #0a0a0a;
-    --secondary: #262626;
-    --secondary-foreground: #ededed;
-    --muted: #262626;
-    --muted-foreground: #a3a3a3;
-    --accent: #262626;
-    --accent-foreground: #ededed;
-    --destructive: #7f1d1d;
-    --destructive-foreground: #ededed;
-    --border: #262626;
-    --input: #262626;
-    --ring: #ededed;
-  }
+/* Custom trading app styles */
+.gradient-bg {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+}
+
+.glass-card {
+  background: rgba(17, 17, 17, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.trading-card {
+  background: linear-gradient(145deg, #111111 0%, #1a1a1a 100%);
+  border: 1px solid #1e293b;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+.profit-text {
+  color: #10b981;
+}
+
+.loss-text {
+  color: #ef4444;
+}
+
+.neutral-text {
+  color: #94a3b8;
+}
+
+.primary-glow {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.success-glow {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+}
+
+.danger-glow {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  min-height: 100vh;
 }
 
 * {
   border-color: var(--border);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
 }

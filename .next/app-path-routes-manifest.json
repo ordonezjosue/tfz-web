@@ -1,0 +1,18 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/api/auth/login/route": "/api/auth/login",
+  "/api/auth/logout/route": "/api/auth/logout",
+  "/api/auth/session/route": "/api/auth/session",
+  "/api/chains/route": "/api/chains",
+  "/api/fees/route": "/api/fees",
+  "/api/oco/route": "/api/oco",
+  "/api/quotes/route": "/api/quotes",
+  "/api/trades/close/route": "/api/trades/close",
+  "/api/trades/log/route": "/api/trades/log",
+  "/dashboard/page": "/dashboard",
+  "/favicon.ico/route": "/favicon.ico",
+  "/login/page": "/login",
+  "/page": "/",
+  "/recommend/page": "/recommend",
+  "/scanner/page": "/scanner"
+}

@@ -217,67 +217,69 @@ export function RecommenderContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen gradient-bg">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
+      <header className="glass-card border-b border-blue-500/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-20">
             <div>
-              <h1 className="text-xl font-semibold text-gray-900">
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">
                 Trade Recommender
               </h1>
-              <p className="text-sm text-gray-500">
-                Get personalized options recommendations
+              <p className="text-neutral-text mt-1">
+                Get personalized options recommendations with advanced analytics
               </p>
             </div>
             <Button
               variant="outline"
               onClick={() => router.push('/dashboard')}
+              className="border-green-500/30 text-green-400 hover:bg-green-500/10 hover:border-green-400 success-glow"
             >
-              Back to Dashboard
+              ← Back to Dashboard
             </Button>
           </div>
         </div>
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Input Form */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Trade Parameters</CardTitle>
-              <CardDescription>
+          <Card className="trading-card">
+            <CardHeader className="border-b border-green-500/20">
+              <CardTitle className="text-xl font-semibold text-green-400">Trade Parameters</CardTitle>
+              <CardDescription className="text-neutral-text">
                 Specify your trade requirements
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="ticker">Ticker Symbol</Label>
+            <CardContent className="pt-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="space-y-3">
+                  <Label htmlFor="ticker" className="text-sm font-medium text-green-300">Ticker Symbol</Label>
                   <Input
                     id="ticker"
                     value={formData.ticker}
                     onChange={(e) => setFormData({ ...formData, ticker: e.target.value.toUpperCase() })}
                     placeholder="AAPL"
                     required
+                    className="bg-slate-800/50 border-slate-600 text-white focus:border-green-400 focus:ring-green-400/20"
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="side">Spread Side</Label>
+                <div className="space-y-3">
+                  <Label htmlFor="side" className="text-sm font-medium text-green-300">Spread Side</Label>
                   <select
                     id="side"
-                    className="w-full p-2 border rounded-md"
+                    className="w-full p-3 bg-slate-800/50 border border-slate-600 rounded-lg text-white focus:border-green-400 focus:ring-green-400/20"
                     value={formData.side}
                     onChange={(e) => setFormData({ ...formData, side: e.target.value as 'call' | 'put' })}
                   >
-                    <option value="call">Call Spread</option>
-                    <option value="put">Put Spread</option>
+                    <option value="call">📈 Call Spread</option>
+                    <option value="put">📉 Put Spread</option>
                   </select>
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="dte">Days to Expiry</Label>
+                <div className="space-y-3">
+                  <Label htmlFor="dte" className="text-sm font-medium text-green-300">Days to Expiry</Label>
                   <Input
                     id="dte"
                     type="number"
@@ -286,11 +288,12 @@ export function RecommenderContent() {
                     value={formData.dte}
                     onChange={(e) => setFormData({ ...formData, dte: Number(e.target.value) })}
                     required
+                    className="bg-slate-800/50 border-slate-600 text-white focus:border-green-400 focus:ring-green-400/20"
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="targetDelta">Target Delta</Label>
+                <div className="space-y-3">
+                  <Label htmlFor="targetDelta" className="text-sm font-medium text-green-300">Target Delta</Label>
                   <Input
                     id="targetDelta"
                     type="number"
@@ -300,14 +303,15 @@ export function RecommenderContent() {
                     value={formData.targetDelta}
                     onChange={(e) => setFormData({ ...formData, targetDelta: Number(e.target.value) })}
                     required
+                    className="bg-slate-800/50 border-slate-600 text-white focus:border-green-400 focus:ring-green-400/20"
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="width">Spread Width</Label>
+                <div className="space-y-3">
+                  <Label htmlFor="width" className="text-sm font-medium text-green-300">Spread Width</Label>
                   <select
                     id="width"
-                    className="w-full p-2 border rounded-md"
+                    className="w-full p-3 bg-slate-800/50 border border-slate-600 rounded-lg text-white focus:border-green-400 focus:ring-green-400/20"
                     value={formData.width}
                     onChange={(e) => setFormData({ ...formData, width: Number(e.target.value) })}
                   >
@@ -318,112 +322,150 @@ export function RecommenderContent() {
 
                 <Button
                   type="submit"
-                  className="w-full"
+                  className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold py-3 rounded-lg success-glow transition-all duration-200"
                   disabled={loading}
                 >
-                  {loading ? 'Analyzing...' : 'Get Recommendation'}
+                  {loading ? (
+                    <div className="flex items-center justify-center">
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                      Analyzing...
+                    </div>
+                  ) : (
+                    '🎯 Get Recommendation'
+                  )}
                 </Button>
               </form>
 
               {error && (
-                <div className="mt-4 text-red-600 text-sm">
-                  {error}
+                <div className="mt-6 bg-red-500/10 border border-red-500/30 text-red-400 p-4 rounded-lg">
+                  <div className="flex items-center">
+                    <div className="text-red-400 mr-2">⚠️</div>
+                    {error}
+                  </div>
                 </div>
               )}
             </CardContent>
           </Card>
 
           {/* Recommendation Results */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Recommendation</CardTitle>
-              <CardDescription>
+          <Card className="trading-card">
+            <CardHeader className="border-b border-green-500/20">
+              <CardTitle className="text-xl font-semibold text-green-400">Recommendation</CardTitle>
+              <CardDescription className="text-neutral-text">
                 {recommendation ? 'Trade analysis and metrics' : 'Enter parameters to get a recommendation'}
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="pt-6">
               {recommendation ? (
-                <div className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <div className="text-sm text-gray-500">Short Strike</div>
-                      <div className="font-medium">${recommendation.shortStrike.strike}</div>
-                      <div className="text-sm text-gray-500">
-                        Delta: {recommendation.shortStrike.delta.toFixed(3)}
+                <div className="space-y-6">
+                  {/* Strike Information */}
+                  <div className="glass-card p-6 rounded-xl border border-green-500/20">
+                    <h3 className="text-lg font-semibold text-green-400 mb-4">Strike Details</h3>
+                    <div className="grid grid-cols-2 gap-6">
+                      <div className="text-center">
+                        <div className="text-sm text-neutral-text mb-1">Short Strike</div>
+                        <div className="text-2xl font-bold text-white">${recommendation.shortStrike.strike}</div>
+                        <div className="text-sm text-neutral-text">
+                          Delta: {recommendation.shortStrike.delta.toFixed(3)}
+                        </div>
                       </div>
-                    </div>
-                    <div>
-                      <div className="text-sm text-gray-500">Long Strike</div>
-                      <div className="font-medium">${recommendation.longStrike.strike}</div>
-                      <div className="text-sm text-gray-500">
-                        Delta: {recommendation.longStrike.delta.toFixed(3)}
+                      <div className="text-center">
+                        <div className="text-sm text-neutral-text mb-1">Long Strike</div>
+                        <div className="text-2xl font-bold text-white">${recommendation.longStrike.strike}</div>
+                        <div className="text-sm text-neutral-text">
+                          Delta: {recommendation.longStrike.delta.toFixed(3)}
+                        </div>
                       </div>
                     </div>
                   </div>
 
+                  {/* Financial Metrics */}
                   <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <div className="text-sm text-gray-500">Net Credit</div>
-                      <div className="font-medium text-green-600">
+                    <div className="glass-card p-4 rounded-lg border border-green-500/20 text-center">
+                      <div className="text-sm text-neutral-text mb-1">Net Credit</div>
+                      <div className="text-xl font-bold profit-text">
                         {formatCurrency(recommendation.netCredit)}
                       </div>
                     </div>
-                    <div>
-                      <div className="text-sm text-gray-500">Credit %</div>
-                      <div className="font-medium">
+                    <div className="glass-card p-4 rounded-lg border border-blue-500/20 text-center">
+                      <div className="text-sm text-neutral-text mb-1">Credit %</div>
+                      <div className="text-xl font-bold text-blue-400">
                         {formatPercent(recommendation.creditPercent / 100, 1)}
                       </div>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <div className="text-sm text-gray-500">Max Risk</div>
-                      <div className="font-medium text-red-600">
+                    <div className="glass-card p-4 rounded-lg border border-red-500/20 text-center">
+                      <div className="text-sm text-neutral-text mb-1">Max Risk</div>
+                      <div className="text-xl font-bold loss-text">
                         {formatCurrency(recommendation.maxRisk)}
                       </div>
                     </div>
-                    <div>
-                      <div className="text-sm text-gray-500">Max Profit</div>
-                      <div className="font-medium text-green-600">
+                    <div className="glass-card p-4 rounded-lg border border-green-500/20 text-center">
+                      <div className="text-sm text-neutral-text mb-1">Max Profit</div>
+                      <div className="text-xl font-bold profit-text">
                         {formatCurrency(recommendation.maxProfit)}
                       </div>
                     </div>
                   </div>
 
-                  <div>
-                    <div className="text-sm text-gray-500">Breakeven</div>
-                    <div className="font-medium">${recommendation.breakeven.toFixed(2)}</div>
+                  {/* Breakeven */}
+                  <div className="glass-card p-4 rounded-lg border border-yellow-500/20 text-center">
+                    <div className="text-sm text-neutral-text mb-1">Breakeven</div>
+                    <div className="text-xl font-bold text-yellow-400">${recommendation.breakeven.toFixed(2)}</div>
                   </div>
 
-                  <div>
-                    <div className="text-sm text-gray-500">OCO Levels</div>
-                    <div className="text-sm">
-                      <div>Take Profit: {formatCurrency(recommendation.ocoLevels.takeProfit)}</div>
-                      <div>Stop Loss: {formatCurrency(recommendation.ocoLevels.stopLoss)}</div>
-                      <div>Time Stop: {recommendation.ocoLevels.timeStop}</div>
+                  {/* OCO Levels */}
+                  <div className="glass-card p-6 rounded-xl border border-blue-500/20">
+                    <h3 className="text-lg font-semibold text-blue-400 mb-4">OCO Levels</h3>
+                    <div className="grid grid-cols-3 gap-4 text-center">
+                      <div>
+                        <div className="text-sm text-neutral-text mb-1">Take Profit</div>
+                        <div className="font-semibold profit-text">{formatCurrency(recommendation.ocoLevels.takeProfit)}</div>
+                      </div>
+                      <div>
+                        <div className="text-sm text-neutral-text mb-1">Stop Loss</div>
+                        <div className="font-semibold loss-text">{formatCurrency(recommendation.ocoLevels.stopLoss)}</div>
+                      </div>
+                      <div>
+                        <div className="text-sm text-neutral-text mb-1">Time Stop</div>
+                        <div className="font-semibold text-yellow-400">{recommendation.ocoLevels.timeStop}</div>
+                      </div>
                     </div>
                   </div>
 
-                  <div>
-                    <div className="text-sm text-gray-500">Fees</div>
-                    <div className="text-sm">
-                      <div>Entry: {formatCurrency(recommendation.fees.entry)}</div>
-                      <div>Exit: {formatCurrency(recommendation.fees.exit)}</div>
-                      <div>Round Trip: {formatCurrency(recommendation.fees.roundTrip)}</div>
+                  {/* Fees */}
+                  <div className="glass-card p-4 rounded-lg border border-slate-500/20">
+                    <h3 className="text-lg font-semibold text-slate-400 mb-3">Fees</h3>
+                    <div className="grid grid-cols-3 gap-4 text-center">
+                      <div>
+                        <div className="text-sm text-neutral-text mb-1">Entry</div>
+                        <div className="font-semibold text-white">{formatCurrency(recommendation.fees.entry)}</div>
+                      </div>
+                      <div>
+                        <div className="text-sm text-neutral-text mb-1">Exit</div>
+                        <div className="font-semibold text-white">{formatCurrency(recommendation.fees.exit)}</div>
+                      </div>
+                      <div>
+                        <div className="text-sm text-neutral-text mb-1">Round Trip</div>
+                        <div className="font-semibold text-white">{formatCurrency(recommendation.fees.roundTrip)}</div>
+                      </div>
                     </div>
                   </div>
 
                   <Button
                     onClick={handleLogTrade}
-                    className="w-full"
+                    className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-4 rounded-lg primary-glow transition-all duration-200"
                   >
-                    Log This Trade
+                    📝 Log This Trade
                   </Button>
                 </div>
               ) : (
-                  <div className="text-center py-8 text-gray-500">
-                    Enter your trade parameters and click &quot;Get Recommendation&quot; to see analysis.
+                  <div className="text-center py-12">
+                    <div className="text-6xl mb-4">🎯</div>
+                    <p className="text-neutral-text text-lg mb-2">Ready to analyze your trade</p>
+                    <p className="text-sm text-neutral-text">Enter your trade parameters and click &quot;Get Recommendation&quot; to see detailed analysis</p>
                   </div>
               )}
             </CardContent>
