@@ -113,3 +113,5 @@ This software is for educational and personal use only. Options trading involves
 **Happy Trading! 📊💰**
 
 *Last updated: $(date)*
+
+<!-- Deployment trigger: $(date +%s) -->
